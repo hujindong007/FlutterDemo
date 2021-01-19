@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/home_pushDIYView.dart';
 
 class HomeDIYList extends StatelessWidget {
   static const String routeName = "/dIyList";
@@ -33,8 +34,15 @@ class dIyListViewDemo extends StatelessWidget {
         children: <Widget>[
           DIYListViewDemoCellItem("第一行标题第一行标题第一行标题第一行标题", "第一行副标题", "第一行内容",
               "https://upload-images.jianshu.io/upload_images/16117826-caad4bd33f9db69c.jpg",
-              onTapClick: () {
-            print("点击第一行");
+              onTapClick: () async {
+            var result = await Navigator.push(context,
+                MaterialPageRoute(builder: (context) {
+              return PushDIYView(
+                text: "我是异步push值",
+                backgroundColor: Colors.yellow,
+              );
+            }));
+            print("pop返回值:$result");
           }, onLongTap: () {
             print("长按第一行");
           }),
@@ -69,6 +77,10 @@ class DIYListViewDemoCellItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+    print('width is $width; height is $height');
     return Container(
       padding: EdgeInsets.all(12),
       //裁剪边框
@@ -79,14 +91,16 @@ class DIYListViewDemoCellItem extends StatelessWidget {
 
       child: Column(
         children: <Widget>[
-          // BorderRadius()
-          // ClipRRect(
-          // borderRadius: BorderRadius.circular(100),
-          // ),
           new Material(
             color: Colors.blue,
             borderRadius: BorderRadius.circular(10),
             child: new InkWell(
+              //按压时候的背景色圆角
+              // borderRadius: BorderRadius.circular(100),
+              // 去除按压渐变色
+              splashColor: Colors.transparent,
+              //去除高亮颜色
+              highlightColor: Colors.transparent,
               onTap: () {
                 this.onTapClick();
               },
@@ -101,13 +115,16 @@ class DIYListViewDemoCellItem extends StatelessWidget {
                     children: [
                       SizedBox(width: 5),
                       Container(
-                        child: Image.network(
-                            'https://upload-images.jianshu.io/upload_images/16117826-caad4bd33f9db69c.jpg'),
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black12, width: 1),
-                            borderRadius: BorderRadius.circular(10)),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          //Image.network 网络图片 Image.asset 本地图片
+                          child: Image.network(
+                            imgUrl,
+                            fit: BoxFit.fill,
+                            width: 80,
+                            height: 80,
+                          ),
+                        ),
                       ),
                       // Expanded 可以自动换行
                       SizedBox(width: 5),
@@ -125,10 +142,6 @@ class DIYListViewDemoCellItem extends StatelessWidget {
                       SizedBox(width: 5),
                     ],
                   ),
-                  // Text(
-                  //   title,
-                  //   style: stytleOne,
-                  // ),
                   SizedBox(
                     height: 10,
                   ),
@@ -141,86 +154,23 @@ class DIYListViewDemoCellItem extends StatelessWidget {
                   ),
                   Container(
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
+                      //设置某个角 圆角
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10)),
                       child: FadeInImage.assetNetwork(
                         placeholder: "assets/images/liu.jpeg",
-                        image: imgUrl,
+                        image: imgUrl, //网络图片
                         fit: BoxFit.cover,
+                        height: 200,
+                        width: width - 24,
                       ),
                     ),
-                    // decoration: BoxDecoration(
-                    //     border: Border.all(color: Colors.black12, width: 1),
-                    //     borderRadius: BorderRadius.circular(10)),
                   ),
-                  // Image.network(
-                  //   imgUrl,
-                  // decoration: BoxDecoration(
-                  //           border: Border.all(color: Colors.black12, width: 1),
-                  //           borderRadius: BorderRadius.circular(10)),),
-                  // SizedBox(height: 10),
                 ],
               ),
             ),
           ),
-          // InkWell(
-          //   //按压时候的背景色圆角
-          //   borderRadius: BorderRadius.circular(100),
-          //   // 去除按压渐变色
-          //   splashColor: Colors.red,
-          //   //去除高亮颜色
-          //   highlightColor: Colors.transparent,
-          //   onTap: () {
-          //     this.onTapClick();
-          //   },
-          //   onLongPress: () {
-          //     this.onLongTap();
-          //   },
-          //   child: Column(
-          //     children: <Widget>[
-          //       SizedBox(height: 80),
-          //       Row(
-          //         children: [
-          //           Container(
-          //             child: Image.network(
-          //                 'https://upload-images.jianshu.io/upload_images/16117826-caad4bd33f9db69c.jpg'),
-          //             width: 80,
-          //             height: 80,
-          //             decoration: BoxDecoration(
-          //                 border: Border.all(color: Colors.black12, width: 1),
-          //                 borderRadius: BorderRadius.circular(10)),
-          //           ),
-          //           // Expanded 可以自动换行
-          //           Expanded(
-          //               child: Text(
-          //             title,
-          //             style: styleTwo,
-          //           )),
-          //           // Text
-          //           Text(
-          //             subTitle,
-          //             style: stytleOne,
-          //           ),
-          //         ],
-          //       ),
-          //       // Text(
-          //       //   title,
-          //       //   style: stytleOne,
-          //       // ),
-          //       SizedBox(
-          //         height: 10,
-          //       ),
-          //       Text(
-          //         content,
-          //         style: styleTwo,
-          //       ),
-          //       SizedBox(
-          //         height: 10,
-          //       ),
-          //       Image.network(imgUrl),
-          //     ],
-          //   ),
-          // )，
-          //   ),
         ],
       ),
     );
