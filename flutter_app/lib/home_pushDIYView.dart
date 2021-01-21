@@ -57,40 +57,9 @@ class PushDIYDetailViewDemo extends StatelessWidget {
                 ),
                 recognizer: TapGestureRecognizer() // 属性指定手势交互
                   ..onTap = () {
-                    // print("Hello World7");
-                    // showDialog<Null>(
-                    //   context: context,
-                    //   barrierDismissible: false,
-                    //   builder: (BuildContext context) {
-                    //     return new AlertDialog(
-                    //       title: new Text('标题'),
-                    //       content: new SingleChildScrollView(
-                    //         child: new ListBody(
-                    //           children: <Widget>[
-                    //             new Text('内容 1'),
-                    //             new Text('内容 2'),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //       actions: <Widget>[
-                    //         new FlatButton(
-                    //           child: new Text('确定'),
-                    //           onPressed: () {
-                    //             Navigator.of(context).pop();
-                    //           },
-                    //         ),
-                    //       ],
-                    //     );
-                    //   },
-                    // ).then((val) {
-                    //   print(val);
-                    // });
-
-                    // showCupertinoDialog(context);
-
                     Toast.toast(
                       context,
-                      msg: '大哥~你不是点到了我吗~', // String 提示的文本
+                      msg: '提示一下', // String 提示的文本
                       showTime: 2000, // int 显示的时间，单位milliseconds，也就是毫秒
                       bgColor: Color.fromRGBO(130, 0, 0, 1), // Color 提示框背景颜色
                       textColor:
@@ -107,43 +76,4 @@ class PushDIYDetailViewDemo extends StatelessWidget {
       ),
     );
   }
-
-//   void showCupertinoDialog(BuildContext context) {
-//     var dialog = CupertinoAlertDialog(
-//       content: Text(
-//         "你好,我是你苹果爸爸的界面",
-//         style: TextStyle(fontSize: 20),
-//       ),
-//       actions: <Widget>[
-//         // CupertinoButton(
-//         //   child: Text("取消"),
-//         //   onPressed: () {
-//         //     Navigator.pop(context);
-//         //   },
-//         // ),
-//         // CupertinoButton(
-//         //   child: Text("确定"),
-//         //   onPressed: () {
-//         //     Navigator.pop(context);
-//         //   },
-//         // ),
-//         CupertinoDialogAction(
-//           child: Text('确定'),
-//         ),
-//         CupertinoDialogAction(
-//           child: Text('取消'),
-//         ),
-//       ],
-//     );
-
-//     showDialog(context: context, builder: (_) => dialog);
-//   }
-// }
-
-// class TapTextLink extends State {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(),
-
-//   }
 }

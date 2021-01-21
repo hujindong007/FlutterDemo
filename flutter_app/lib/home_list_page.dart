@@ -4,6 +4,7 @@ import 'package:flutter_app/home_pushOne.dart';
 import 'package:flutter_app/home_pushTwo.dart';
 import 'package:flutter_app/home_pushCounter.dart';
 import 'package:flutter_app/home_dIyList.dart';
+import 'package:flutter_app/Text_Button.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeListPage extends StatelessWidget {
@@ -54,6 +55,8 @@ class HomeListPage extends StatelessWidget {
       Navigator.of(context).pushNamed(HomePushCounter.routeName);
     } else if (index == 3) {
       Navigator.of(context).pushNamed(HomeDIYList.routeName);
+    } else if (index == 4) {
+      Navigator.of(context).pushNamed(Text_Button.routeName);
     }
   }
 }
