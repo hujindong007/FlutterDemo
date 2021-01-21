@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter_app/Totast.dart';
 
 class PushDIYView extends StatelessWidget {
   PushDIYView({
@@ -86,7 +86,21 @@ class PushDIYDetailViewDemo extends StatelessWidget {
                     //   print(val);
                     // });
 
-                    showCupertinoDialog(context);
+                    // showCupertinoDialog(context);
+
+                    Toast.toast(
+                      context,
+                      msg: '大哥~你不是点到了我吗~', // String 提示的文本
+                      showTime: 2000, // int 显示的时间，单位milliseconds，也就是毫秒
+                      bgColor: Color.fromRGBO(130, 0, 0, 1), // Color 提示框背景颜色
+                      textColor:
+                          Color.fromRGBO(250, 100, 100, 1), // Color 提示框文字颜色
+                      textSize: 18.0, // double 提示框文字大小
+                      position:
+                          'bottom', // String 提示框显示位置，默认是center，可设置top和bottom
+                      pdHorizontal: 50.0, // double 左右边距
+                      pdVertical: 30.0, // double 上下边距
+                    );
                   }),
           ])),
         ],
@@ -94,37 +108,37 @@ class PushDIYDetailViewDemo extends StatelessWidget {
     );
   }
 
-  void showCupertinoDialog(BuildContext context) {
-    var dialog = CupertinoAlertDialog(
-      content: Text(
-        "你好,我是你苹果爸爸的界面",
-        style: TextStyle(fontSize: 20),
-      ),
-      actions: <Widget>[
-        // CupertinoButton(
-        //   child: Text("取消"),
-        //   onPressed: () {
-        //     Navigator.pop(context);
-        //   },
-        // ),
-        // CupertinoButton(
-        //   child: Text("确定"),
-        //   onPressed: () {
-        //     Navigator.pop(context);
-        //   },
-        // ),
-        CupertinoDialogAction(
-          child: Text('确定'),
-        ),
-        CupertinoDialogAction(
-          child: Text('取消'),
-        ),
-      ],
-    );
+//   void showCupertinoDialog(BuildContext context) {
+//     var dialog = CupertinoAlertDialog(
+//       content: Text(
+//         "你好,我是你苹果爸爸的界面",
+//         style: TextStyle(fontSize: 20),
+//       ),
+//       actions: <Widget>[
+//         // CupertinoButton(
+//         //   child: Text("取消"),
+//         //   onPressed: () {
+//         //     Navigator.pop(context);
+//         //   },
+//         // ),
+//         // CupertinoButton(
+//         //   child: Text("确定"),
+//         //   onPressed: () {
+//         //     Navigator.pop(context);
+//         //   },
+//         // ),
+//         CupertinoDialogAction(
+//           child: Text('确定'),
+//         ),
+//         CupertinoDialogAction(
+//           child: Text('取消'),
+//         ),
+//       ],
+//     );
 
-    showDialog(context: context, builder: (_) => dialog);
-  }
-}
+//     showDialog(context: context, builder: (_) => dialog);
+//   }
+// }
 
 // class TapTextLink extends State {
 //   @override
@@ -132,4 +146,4 @@ class PushDIYDetailViewDemo extends StatelessWidget {
 //     return Container(),
 
 //   }
-// }
+}
