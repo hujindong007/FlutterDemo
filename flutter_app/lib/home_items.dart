@@ -4,4 +4,8 @@ List<String> listItems = [
   "pushCounter",
   "dIyList",
   "text_Button",
+  "imgView",
+  "homeScreen",
+  "switchAndCheckbox",
+  "textFieldAndForm",
 ];

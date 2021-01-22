@@ -149,6 +149,9 @@ class TextAndButtonDemo extends StatelessWidget {
             child: new FlatButton(
               onPressed: () => print("点击自定义FlatButton"),
               color: Colors.blue,
+              // highlightColor: Colors.transparent,//高亮色
+              focusColor: Colors.yellow, //获取焦点颜色
+              splashColor: Colors.orange, //按压波浪色
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),
               child: Row(
@@ -173,3 +176,31 @@ class TextAndButtonDemo extends StatelessWidget {
     );
   }
 }
+
+// const InkWell({
+//     Key key,
+//     Widget child, //子组件
+//     GestureTapCallback onTap, //单击事件
+//     GestureTapCallback onDoubleTap, //双击事件
+//     GestureLongPressCallback onLongPress, //长按事件
+//     GestureTapDownCallback onTapDown, //手指按下
+//     GestureTapCancelCallback onTapCancel, //取消点击事件
+//     ValueChanged<bool> onHighlightChanged, //突出显示或停止突出显示时调用
+//     ValueChanged<bool> onHover, //当指针进入或退出墨水响应区域时调用
+//     MouseCursor mouseCursor,
+//     Color focusColor, //获取焦点颜色
+//     Color hoverColor, //指针悬停时颜色
+//     Color highlightColor, //按住不放时的颜色
+//     MaterialStateProperty<Color> overlayColor,
+//     Color splashColor, //溅墨颜色
+//     InteractiveInkFeatureFactory splashFactory, //自定义溅墨效果
+//     double radius, //溅墨半径
+//     BorderRadius borderRadius, //溅墨元素边框圆角半径
+//     ShapeBorder customBorder, //覆盖borderRadius的自定义剪辑边框
+//     bool enableFeedback = true, //检测到的手势是否应该提供声音和/或触觉反馈，默认true
+//     bool excludeFromSemantics = false, //是否将此小部件引入的手势从语义树中排除。默认false
+//     FocusNode focusNode,
+//     bool canRequestFocus = true,
+//     ValueChanged<bool> onFocusChange,
+//     bool autofocus = false,
+//   })

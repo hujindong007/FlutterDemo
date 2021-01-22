@@ -5,7 +5,10 @@ import 'package:flutter_app/home_pushTwo.dart';
 import 'package:flutter_app/home_pushCounter.dart';
 import 'package:flutter_app/home_dIyList.dart';
 import 'package:flutter_app/Text_Button.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_app/ImgView.dart';
+import 'package:flutter_app/Photo_viewDemo/home_screen.dart';
+import 'package:flutter_app/SwitchAndCheckbox.dart';
+import 'package:flutter_app/TextFieldAndForm.dart';
 
 class HomeListPage extends StatelessWidget {
   static const String routeName = "/home";
@@ -57,6 +60,14 @@ class HomeListPage extends StatelessWidget {
       Navigator.of(context).pushNamed(HomeDIYList.routeName);
     } else if (index == 4) {
       Navigator.of(context).pushNamed(Text_Button.routeName);
+    } else if (index == 5) {
+      Navigator.of(context).pushNamed(ImgView.routeName);
+    } else if (index == 6) {
+      Navigator.of(context).pushNamed(HomeScreen.routeName);
+    } else if (index == 7) {
+      Navigator.of(context).pushNamed(SwitchAndCheckbox.routeName);
+    } else if (index == 8) {
+      Navigator.of(context).pushNamed(TextFieldAndForm.routeName);
     }
   }
 }
