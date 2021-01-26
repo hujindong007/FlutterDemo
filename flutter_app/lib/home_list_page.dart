@@ -9,6 +9,8 @@ import 'package:flutter_app/ImgView.dart';
 import 'package:flutter_app/Photo_viewDemo/home_screen.dart';
 import 'package:flutter_app/SwitchAndCheckbox.dart';
 import 'package:flutter_app/TextFieldAndForm.dart';
+import 'package:flutter_app/LinearProgressIndicator.dart';
+import 'package:flutter_app/RowAndColumn.dart';
 
 class HomeListPage extends StatelessWidget {
   static const String routeName = "/home";
@@ -68,6 +70,10 @@ class HomeListPage extends StatelessWidget {
       Navigator.of(context).pushNamed(SwitchAndCheckbox.routeName);
     } else if (index == 8) {
       Navigator.of(context).pushNamed(TextFieldAndForm.routeName);
+    } else if (index == 9) {
+      Navigator.of(context).pushNamed(ProgressIndicatorLearn.routeName);
+    } else if (index == 10) {
+      Navigator.of(context).pushNamed(RowAndColumnDemo.routeName);
     }
   }
 }

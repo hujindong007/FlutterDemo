@@ -9,6 +9,8 @@ import 'package:flutter_app/ImgView.dart';
 import 'package:flutter_app/Photo_viewDemo/home_screen.dart';
 import 'package:flutter_app/SwitchAndCheckbox.dart';
 import 'package:flutter_app/TextFieldAndForm.dart';
+import 'package:flutter_app/LinearProgressIndicator.dart';
+import 'package:flutter_app/RowAndColumn.dart';
 
 // /Users/fangsu/Desktop/FlutterDemo/flutter_app/lib/Photo_viewDemo/home_screen.dart
 
@@ -24,6 +26,8 @@ class HomeRouter {
     HomeScreen.routeName: (ctx) => HomeScreen(),
     SwitchAndCheckbox.routeName: (ctx) => SwitchAndCheckbox(),
     TextFieldAndForm.routeName: (ctx) => TextFieldAndForm(),
+    ProgressIndicatorLearn.routeName: (ctx) => ProgressIndicatorLearn(),
+    RowAndColumnDemo.routeName: (ctx) => RowAndColumnDemo(),
   };
   static final String initialRoute = HomeListPage.routeName;
 }

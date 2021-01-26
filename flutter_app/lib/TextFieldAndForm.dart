@@ -9,6 +9,7 @@ class TextFieldAndForm extends StatelessWidget {
         title: Text("输入框和表单"),
       ),
       body: TextFieldAndFormDemo(),
+      // body: TextFieldAndFormFocusDemo(),
     );
   }
 }
@@ -19,19 +20,50 @@ class TextFieldAndFormDemo extends StatelessWidget {
         child: Column(
       children: [
         TextField(
-          autofocus: true,
-          textInputAction: TextInputAction.search,
+          //输入字体样式
+          // style: TextStyle(backgroundColor: Colors.yellow, color: Colors.blue),
+          autofocus: true, //自定获取光标
+          obscureText: true, //密文显示
+          // textInputAction: TextInputAction.search, //搜索按钮
+          keyboardType: TextInputType.text,
+          cursorColor: Colors.red, //光标颜色
+          cursorWidth: 20, //光标宽度
+          cursorRadius: Radius.circular(10), //光标圆角
+          // enabled: false, //禁止输入
+          // inputFormatters: [],
+          onChanged: (change) {
+            //监听文本变化
+            print("输入内容:$change");
+          },
+          onSubmitted: (submit) {
+            print("完成点击==$submit");
+          },
           decoration: InputDecoration(
-              labelText: "用户名",
-              hintText: "用户名或邮箱",
-              prefixIcon: Icon(Icons.person)),
+            labelText: "用户名",
+            hintText: "用户名或邮箱",
+            prefixIcon: Icon(Icons.person),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue),
+            ),
+            //获得焦点下划线设为蓝色
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.yellow),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 10,
         ),
         TextField(
           decoration: InputDecoration(
-              labelText: "密码",
-              hintText: "您的登录密码",
-              prefixIcon: Icon(Icons.lock)),
+            labelText: "密码",
+            hintText: "您的登录密码",
+            prefixIcon: Icon(Icons.lock),
+          ),
           obscureText: true,
+        ),
+        SizedBox(
+          height: 10,
         ),
       ],
     ));
@@ -39,6 +71,7 @@ class TextFieldAndFormDemo extends StatelessWidget {
 }
 
 // textInputAction：键盘动作按钮图标(即回车键位图标)，它是一个枚举值，有多个可选值，全部的取值列表读者可以查看API文档，下面是当值为TextInputAction.search时
+
 // style：正在编辑的文本样式。
 
 // textAlign: 输入框内编辑文本在水平方向的对齐方式。
@@ -60,3 +93,62 @@ class TextFieldAndFormDemo extends StatelessWidget {
 // enable：如果为false，则输入框会被禁用，禁用状态不接收输入和事件，同时显示禁用态样式（在其decoration中定义）。
 
 // cursorWidth、cursorRadius和cursorColor：这三个属性是用于自定义输入框光标宽度、圆角和颜色的。
+
+// keyboardType：用于设置该输入框默认的键盘输入类型
+
+// InputDecoration：用于控制TextField的外观显示，如提示文本、背景颜色、边框等。
+
+class TextFieldAndFormFocusDemo extends StatefulWidget {
+  @override
+  _FocusRouteState createState() => new _FocusRouteState();
+}
+
+class _FocusRouteState extends State<TextFieldAndFormFocusDemo> {
+  FocusNode focusnode1 = new FocusNode();
+  FocusNode focusNode2 = new FocusNode();
+  FocusScopeNode focusScopeNode;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        children: <Widget>[
+          TextField(
+            autofocus: true,
+            focusNode: focusnode1,
+            decoration: InputDecoration(labelText: "input1"),
+          ),
+          TextField(
+            focusNode: focusNode2,
+            decoration: InputDecoration(labelText: "input2"),
+          ),
+          Builder(
+            builder: (ctx) {
+              return Column(
+                children: <Widget>[
+                  RaisedButton(
+                    child: Text("移动焦点"),
+                    onPressed: () {
+                      FocusScope.of(context).requestFocus(focusNode2);
+                    },
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  RaisedButton(
+                    child: Text("隐藏焦点"),
+                    onPressed: () {
+                      focusnode1.unfocus();
+                      focusNode2.unfocus();
+                    },
+                  ),
+                ],
+              );
+            },
+          )
+        ],
+      ),
+    );
+  }
+}

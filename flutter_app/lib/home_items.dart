@@ -8,4 +8,6 @@ List<String> listItems = [
   "homeScreen",
   "switchAndCheckbox",
   "textFieldAndForm",
+  "progressIndicatorLearn",
+  "rowAndColumnDemo",
 ];
